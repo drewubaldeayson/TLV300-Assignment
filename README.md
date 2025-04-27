@@ -2,6 +2,7 @@
 
 ## Overview
 This is a full-stack WHOIS lookup application that allows users to retrieve domain and contact information using the WhoisXML API.
+This is only for testing purposes.
 
 ## Features
 - Lookup domain information
@@ -30,53 +31,13 @@ git clone https://github.com/drewubaldeayson/TLV300-Assignment.git
 cd TLV300-Assignment
 ```
 
-### 2. Backend Setup
+### 2. Run setup.sh
+Just run the following command
 ```bash
-# Navigate to backend directory from the root directory of this project
-cd backend
-
-# Install dependencies
-npm install
-
-# Create .env file
-touch .env
+./setup.sh
 ```
 
-### 3. Configure Environment Variables
-Open the .env file and add:
-```bash
-WHOIS_API_KEY=your_whois_api_key_here
-PORT=5000
-NODE_ENV=development
-```
+Make sure your WHOIS API Key is ready. You will enter it during setup.
 
-### 4. Frontend Setup
-Open the .env file and add:
-```bash
-# Navigate to frontend directory from the root directory of this project
-cd frontend
-
-# Install dependencies
-npm install
-```
-
-### 5. Running the Application
-Start Backend Server:
-```bash
-# Navigate to backend directory from root directory
-cd backend
-
-# Start the app
-npm start
-# Server will run on http://localhost:5000
-```
-
-Start Backend Server:
-```bash
-# Navigate to backend directory from root directory
-cd frontend
-
-# Start the app
-npm start
-# Server will run on http://localhost:3000 by default
-```
+Server will run on http://localhost:5000
+Server will run on http://localhost:3000 by default

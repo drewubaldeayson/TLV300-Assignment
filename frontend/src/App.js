@@ -5,8 +5,7 @@ import ContactInfoTable from './components/domain/ContactInfoTable';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import { validateDomain, sanitizeDomain } from './utils/validation';
-import { camelToTitleCase } from './utils/formatting';
-import './styles/global.css';
+import './App.css';
 
 function App() {
     const { 
@@ -24,36 +23,40 @@ function App() {
         e.preventDefault();
         
         try {
-            // Validate and sanitize domain
             const sanitizedDomain = sanitizeDomain(domain);
             validateDomain(sanitizedDomain);
             
-            // Perform lookup
             await performLookup(sanitizedDomain, infoType);
         } catch (validationError) {
-            // Error handling is managed in the hook
             console.error(validationError);
         }
     };
 
     const renderResults = () => {
         if (loading) return <LoadingSpinner />;
-        if (error) return <div className="error-message">{error}</div>;
+        if (error) return <div className="error-banner">{error}</div>;
         if (!results) return null;
 
-        return infoType === 'domain' 
-            ? <DomainInfoTable data={results} /> 
-            : <ContactInfoTable data={results} />;
+        return (
+            <div className="results-container">
+                {infoType === 'domain' 
+                    ? <DomainInfoTable data={results} /> 
+                    : <ContactInfoTable data={results} />}
+            </div>
+        );
     };
 
     return (
         <ErrorBoundary>
-            <div className="app-container">
-                <div className="whois-lookup-container">
-                    <form onSubmit={handleSubmit} className="whois-form">
+            <div className="app-wrapper">
+                <div className="whois-lookup-panel">
+                    <div className="panel-header">
                         <h1>WHOIS Lookup</h1>
-                        
-                        <div className="form-group">
+                        <p>Discover detailed information about any domain</p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="lookup-form">
+                        <div className="input-group">
                             <input
                                 type="text"
                                 value={domain}
@@ -62,9 +65,6 @@ function App() {
                                 required
                                 className="domain-input"
                             />
-                        </div>
-                        
-                        <div className="form-group">
                             <select 
                                 value={infoType} 
                                 onChange={(e) => setInfoType(e.target.value)}
@@ -80,7 +80,8 @@ function App() {
                             disabled={loading}
                             className="lookup-button"
                         >
-                            {loading ? 'Searching...' : 'Lookup'}
+                            {loading ? 'Searching...' : 'Lookup Domain'}
+                            <span className="button-icon">🔍</span>
                         </button>
                     </form>
 
