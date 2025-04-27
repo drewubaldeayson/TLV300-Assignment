@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.whois-lookup-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.whois-lookup-form h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.whois-lookup-form input,
+.whois-lookup-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.whois-lookup-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.whois-lookup-form button:hover {
+  background-color: #0056b3;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.result-table th {
+  background-color: #f2f2f2;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+}
