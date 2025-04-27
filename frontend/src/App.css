@@ -1,70 +1,153 @@
-.container {
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f4f6f9;
+  --text-color: #2c3e50;
+  --border-radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: var(--background-color);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.app-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f6f9;
-  font-family: 'Arial', sans-serif;
+  padding: 20px;
 }
 
-.whois-lookup-form {
+.whois-lookup-panel {
   background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
+  padding: 30px;
+  transition: all 0.3s ease;
 }
 
-.whois-lookup-form h1 {
+.whois-lookup-panel:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.panel-header {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.whois-lookup-form input,
-.whois-lookup-form select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.panel-header h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-.whois-lookup-form button {
+.panel-header p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.lookup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.domain-input,
+.info-type-select {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.domain-input:focus,
+.info-type-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.lookup-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.whois-lookup-form button:hover {
-  background-color: #0056b3;
+.lookup-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
-.result-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+.lookup-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
 }
 
-.result-table th,
-.result-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
+.button-icon {
+  font-size: 1.2rem;
 }
 
-.result-table th {
-  background-color: #f2f2f2;
-}
-
-.error-message {
-  color: red;
+.error-banner {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
+  animation: shake 0.5s;
+}
+
+.results-container {
+  margin-top: 25px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .whois-lookup-panel {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      padding: 20px;
+  }
 }
